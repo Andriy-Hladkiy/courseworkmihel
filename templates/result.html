@@ -1,0 +1,50 @@
+{% extends "index.html" %}
+
+{% block content %}
+<style>
+    .table {
+        margin-bottom: 50px;
+    }
+</style>
+
+
+ <div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Laboratory name</th>
+                <th scope="col">Laboratory requirement</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for laboratory in laboratory_requirement %}
+        <tr>
+            <td> {{laboratory.laboratory_name }} </td>
+            <td class="laboratory-requirement_name"> {{laboratory.requirement_name}} </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Student recordbook</th>
+                <th scope="col">Student requirement done</th>
+                <th scope="col">Result</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for student in student_requirement %}
+        <tr>
+            <td> {{student.student_recordbook }} </td>
+            <td class="student-requirement_name"> {{student.requirement_name}} </td>
+            <td class="student-result"></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+ </div>
+
+{% endblock %}

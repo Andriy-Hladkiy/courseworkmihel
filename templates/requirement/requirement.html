@@ -1,0 +1,35 @@
+{% extends "index.html" %}
+
+{% block content %}
+ <div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Requirement name</th>
+                <th scope="col">Requirement point</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for requirement in requirement_list %}
+        <tr>
+            <td> {{requirement.requirement_name }} </td>
+            <td> {{requirement.requirement_point}} </td>
+            <td>
+                <a href="/edit_requirement_info/{{requirement.requirement_name }}"
+                   button type="button"
+                   class="btn btn-warning"
+                   data-requirement_name="{{requirement.requirement_name}}">Edit</a>
+
+                <a href="/remove-requirement/{{requirement.requirement_name }}"
+                   button type="button"
+                   class="btn btn-danger"
+                   data-requirement_name="{{requirement.requirement_name}}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+     <a href="/add_requirement" class="btn btn-success">Add requirement</a>
+ </div>
+{% endblock %}

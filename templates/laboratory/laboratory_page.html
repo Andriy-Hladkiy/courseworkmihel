@@ -1,0 +1,42 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+
+
+ <div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Laboratory name</th>
+                <th scope="col">Laboratory subject</th>
+                <th scope="col">Laboratory mark</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for laboratory in laboratory_list %}
+        <tr>
+            <td> {{laboratory.laboratory_name }} </td>
+            <td> {{laboratory.laboratory_subject}} </td>
+            <td> {{laboratory.laboratory_mark}} </td>
+            <td>
+                <a href="/edit_laboratory_info/{{laboratory.laboratory_name }}"
+                   button type="button"
+                   class="btn btn-warning"
+                   data-laboratory_name="{{laboratory.laboratory_name}}">Edit</a>
+
+                <a href="/remove-laboratory/{{laboratory.laboratory_name }}"
+                   button type="button"
+                   class="btn btn-danger"
+                   data-laboratory_name="{{laboratory.laboratory_name}}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+     <a href="/add_laboratory" class="btn btn-success">Add laboratory</a>
+ </div>
+
+
+{% endblock %}

@@ -1,0 +1,56 @@
+
+{% extends "index.html" %}
+
+{% block content %}
+
+    <h1>Requirements chart</h1>
+    <div id="bar" class="bar">
+    </div>
+
+    <h2>Students and their requirements</h2>
+    <div id="pie" class="bar">
+    </div>
+
+        <h2>graph</h2>
+    <div id="scat" class="bar">
+    </div>
+
+
+
+     <div><span>Correlation dependency between age and count items = {{ corr_coef }}</span></div>
+
+
+
+    <script src="{{ url_for('static', filename='js/d3.v5.min.js') }}"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
+    <script type="text/javascript">
+
+        var data1 = [{
+          labels: {{ lab1 | tojson }},
+          values: {{ val1 | tojson }},
+          type: 'pie'
+        }];
+
+        var data2 = [{
+          x: {{ lab2 | tojson }},
+          y: {{ val2 | tojson }},
+          type: 'bar'
+        }];
+
+                var data3 = [{
+          x: {{ lab3 | tojson }},
+          y: {{ val3 | tojson }},
+          type: 'scatter'
+        }];
+
+        Plotly.newPlot('pie', data1, {}, {showSendToCloud:true});
+
+        Plotly.newPlot('bar', data2, {}, {showSendToCloud:true});
+
+        Plotly.newPlot('scat', data3, {}, {showSendToCloud:true});
+
+    </script>
+
+{% endblock %}

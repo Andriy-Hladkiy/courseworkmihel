@@ -1,0 +1,46 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <div class="col-md-6 mx-auto">
+        <div class="card rounded-0">
+
+            <div class="card-header">
+                <h3 class="mb-0">{{form_name}}</h3>
+            </div>
+            <div class="card-body">
+
+                <form class="form"   method = "post" >
+                    {{ form.hidden_tag() }}
+                    <div class="form-group">
+                        {{ form.student_is_worker.label }}
+                        {{ form.student_is_worker(class_="form-control") }}
+
+
+                        {% if form.student_is_worker.errors%}
+                            <div class="alert alert-danger" role="alert">
+                                {% for message in form.student_is_worker.errors %}
+                                    <div>{{ message }}</div>
+                                {% endfor %}
+                            </div>
+                        {%endif%}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.student_time_work.label }}
+                        {{ form.student_time_work(class_="form-control") }}
+
+
+                        {% if form.student_time_work.errors%}
+                            <div class="alert alert-danger" role="alert">
+                                {% for message in form.student_time_work.errors %}
+                                    <div>{{ message }}</div>
+                                {% endfor %}
+                            </div>
+                        {%endif%}
+                    </div>
+                    {{ form.submit(class_="btn btn-success") }}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

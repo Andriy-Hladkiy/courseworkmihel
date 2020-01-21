@@ -1,0 +1,48 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <div class="col-md-6 mx-auto">
+        <div class="card rounded-0">
+
+            <div class="card-header">
+                <h3 class="mb-0">{{ form_name }}</h3>
+            </div>
+
+            <div class="card-body">
+
+                <form class="form" method=post>
+                    {{ form.hidden_tag() }}
+
+                    <div class="form-group">
+                        {{ form.requirement_name.label }}
+                        {{ form.requirement_name(class_="form-control") }}
+
+                        {% if form.requirement_name.errors %}
+                            <div class="alert alert-danger" role="alert">
+                                {% for message in form.requirement_name.errors %}
+                                    <div>{{ message }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+
+                    <div class="form-group">
+                        {{ form.requirement_point.label }}
+                        {{ form.requirement_point(class_="form-control") }}
+
+                        {% if form.requirement_point.errors %}
+                            <div class="alert alert-danger" role="alert">
+                                {% for message in form.requirement_point.errors %}
+                                    <div>{{ message }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    {{ form.submit(class_="btn btn-success") }}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

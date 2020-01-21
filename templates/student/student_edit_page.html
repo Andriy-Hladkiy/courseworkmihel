@@ -1,0 +1,87 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <div class="col-md-6 mx-auto">
+        <div class="card rounded-0">
+
+            <div class="card-header">
+                <h3 class="mb-0">{{ form_name }}</h3>
+            </div>
+
+            <div class="card-body">
+
+                <form class="form" method=post>
+                    {{ form.hidden_tag() }}
+
+                    <div class="form-group">
+                        {{ form.student_recordbook.label }}
+                        {{ form.student_recordbook(class_="form-control") }}
+
+                        {% if form.student_recordbook.errors %}
+                            <div class="alert alert-danger" role="alert">
+                                {% for message in form.student_recordbook.errors %}
+                                    <div>{{ message }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+
+                    <div class="form-group">
+                        {{ form.student_name.label }}
+                        {{ form.student_name(class_="form-control") }}
+
+                        {% if form.student_name.errors %}
+                            <div class="alert alert-danger" role="alert">
+                                {% for message in form.student_name.errors %}
+                                    <div>{{ message }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.student_surname.label }}
+                        {{ form.student_surname(class_="form-control") }}
+
+                        {% if form.student_surname.errors %}
+                            <div class="alert alert-danger" role="alert">
+                                {% for message in form.student_surname.errors %}
+                                    <div>{{ message }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.student_groupe.label }}
+                        {{ form.student_groupe(class_="form-control") }}
+
+                        {% if form.student_groupe.errors %}
+                            <div class="alert alert-danger" role="alert">
+                                {% for message in form.student_groupe.errors %}
+                                    <div>{{ message }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.student_faculty.label }}
+                        {{ form.student_faculty(class_="form-control") }}
+
+
+                        {% if form.student_faculty.errors %}
+                            <div class="alert alert-danger" role="alert">
+                                {% for message in form.student_faculty.errors %}
+                                    <div>{{ message }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    {{ form.submit(class_="btn btn-success") }}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

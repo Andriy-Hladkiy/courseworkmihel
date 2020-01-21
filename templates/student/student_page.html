@@ -1,0 +1,46 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+
+
+ <div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Student recordbook</th>
+                <th scope="col">Student name</th>
+                <th scope="col">Student surname</th>
+                <th scope="col">Student group</th>
+                <th scope="col">Student faculty</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+        {% for student in student_list %}
+        <tr>
+            <td> {{student.student_recordbook }} </td>
+            <td> {{student.student_name}} </td>
+            <td> {{student.student_surname}} </td>
+            <td> {{student.student_groupe}} </td>
+            <td> {{student.student_faculty}} </td>
+            <td>
+                <a href="/edit_student_info/{{student.student_recordbook }}"
+                   button type="button"
+                   class="btn btn-warning"
+                   data-student_recordbook="{{student.student_recordbook}}">Edit</a>
+
+                <a href="/remove-student/{{student.student_recordbook }}"
+                   button type="button"
+                   class="btn btn-danger"
+                   data-student_recordbook="{{student.student_recordbook}}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+     <a href="/add_student" class="btn btn-success">Add Student</a>
+ </div>
+
+
+{% endblock %}
